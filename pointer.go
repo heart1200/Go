@@ -1,4 +1,4 @@
-package Go
+package go
 //This is pointer
 import "fmt"
 
