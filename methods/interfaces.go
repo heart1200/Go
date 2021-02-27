@@ -27,6 +27,7 @@ func (f MyFloat) Abs() float64 {
 }
 
 func main() {
+	// 接口类型的变量可以保存任何实现了这些方法的值。
 	var a Abser
 	v := Vertex{3, 4}
 	f := MyFloat(-math.Sqrt2)
