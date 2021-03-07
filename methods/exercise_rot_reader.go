@@ -30,6 +30,9 @@ func (reader rot13Reader) Read(b []byte) (int, error) {
 
 func main() {
 	s := strings.NewReader("Lbh penpxrq gur pbqr!")
+	// fmt.Printf("s = %v\n", *s)
 	read := rot13Reader{s}
+	// fmt.Printf("read = %v\n", read)
+	// fmt.Printf("read.r = %v\n", read.r)
 	io.Copy(os.Stdout, &read)
 }
