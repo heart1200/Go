@@ -9,21 +9,44 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"sort"
 	"time"
 )
 
-func random_id(n int) []int {
+func random_id(n, source int) []int {
 	rand.Seed(time.Now().UnixNano())
 	var i int
 	if n%2 == 1 {
 		i = 1
 	}
-	id_1 := rand.Perm(20)[0 : n/2+i]
-	id_2 := rand.Perm(20)[0 : n/2]
+	id_1 := rand.Perm(source)[0 : n/2+i]
+	id_2 := rand.Perm(source)[0 : n/2]
 	id := append(id_1, id_2...)
 	return id
 }
 
+// func sort_for_random(a []int) []int {
+// 	return sort.Ints(a)
+// }
+
+func unrepeated(a []int) []int {
+	i := 0
+	for j := 1; j < len(a); j++ {
+		if a[i] != a[j] {
+			i++
+			a[i] = a[j]
+		}
+	}
+	return a[:i+1]
+}
+
 func main() {
-	fmt.Print(random_id(10))
+	// fmt.Println(random_id(10, 15))
+	// a := []int{1, 1, 1, 2, 2, 3, 1}
+	// fmt.Println(unrepeated(a))
+	a := random_id(300, 1000)
+	sort.Ints(a)
+	new := unrepeated(a)
+	fmt.Printf("The id is: %v\n the length is: %v\n", new, len(new))
+	// fmt.Println(unrepeated(new_a))
 }
