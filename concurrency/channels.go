@@ -9,6 +9,8 @@ func sum(s []int, c chan int) {
 	}
 	c <- sum
 }
+
+//和映射与切片一样，信道在使用前必须创建
 func main() {
 	s := []int{7, 2, 8, -9, 4, 0}
 	c := make(chan int)
